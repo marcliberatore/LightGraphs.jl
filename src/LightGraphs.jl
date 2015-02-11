@@ -52,7 +52,7 @@ module LightGraphs
     a_star,
 
     # persistence
-    readgraph
+    readgraph, toneo4j
 
     include("core.jl")
         include("digraph.jl")
@@ -65,6 +65,7 @@ module LightGraphs
             include("linalg.jl")
             include("operators.jl")
             include("persistence.jl")
+            include("neo4j.jl")
             include("randgraphs.jl")
             include("smallgraphs.jl")
             include("centrality/betweenness.jl")
