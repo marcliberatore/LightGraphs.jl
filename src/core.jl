@@ -92,9 +92,9 @@ indegree(g::AbstractGraph, v::Int) = length(badj(g,v))
 outdegree(g::AbstractGraph, v::Int) = length(fadj(g,v))
 
 
-indegree(g::AbstractGraph, v::AbstractArray{Int,1} = vertices(g)) = [indegree(g,x) for x in v]
-outdegree(g::AbstractGraph, v::AbstractArray{Int,1} = vertices(g)) = [outdegree(g,x) for x in v]
-degree(g::AbstractGraph, v::AbstractArray{Int,1} = vertices(g)) = [degree(g,x) for x in v]
+indegree(g::AbstractGraph, v::AbstractArray{Int,1} = vertices(g)) = map(x->indegree(g,x), v)
+outdegree(g::AbstractGraph, v::AbstractArray{Int,1} = vertices(g)) = map(x->outdegree(g,x), v)
+degree(g::AbstractGraph, v::AbstractArray{Int,1} = vertices(g)) = map(x->degree(g,x), v)
 #Δ(g::AbstractGraph) = maximum(degree(g))
 #δ(g::AbstractGraph) = minimum(degree(g))
 Δout(g) = noallocextreme(outdegree,(>), typemin(Int), g)
