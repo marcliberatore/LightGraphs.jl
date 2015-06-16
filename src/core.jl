@@ -74,8 +74,8 @@ end
 
 has_edge(g::AbstractGraph, src::Int, dst::Int) = has_edge(g,Edge(src,dst))
 
-in_edges(g::AbstractGraph, v::Int) = [Edge(x,v) for x in badj(g,v)]
-out_edges(g::AbstractGraph, v::Int) = [Edge(v,x) for x in fadj(g,v)]
+in_edges(g::AbstractGraph, v::Int) = map(x->Edge(x,v), badj(g,v))
+out_edges(g::AbstractGraph, v::Int) = map(x->Edge(v,x), fadj(g,v))
 
 has_vertex(g::AbstractGraph, v::Int) = v in vertices(g)
 
